@@ -1,0 +1,42 @@
+{% if css_custom %}
+    <style>{{ css_custom }}</style>
+{% endif %}
+<div class="custom_form{{ token }}" id="custom_form{{ token }}">
+    {{ html }}
+</div>
+<script>
+    $('#{{ call_to_action }}').on('click', function() {
+        $.ajax({
+            {% if custom_action %}
+            url: '{{ custom_action }}',
+            {% else %}
+            url: 'index.php?route=extension/module/builder_custom_forms/submit',
+            {% endif %}
+            type: 'post',
+            dataType: 'json',
+            {% if template_name %}
+            data: $('#custom_form{{ token }}').find('select, textarea, input').serialize() + "&email_to=" + '{{ email }}' + "&template_name=" + '{{ template_name }}',
+            {% else %}
+            data: $('#custom_form{{ token }}').find('select, textarea, input').serialize() + "&email_to=" + '{{ email }}',
+            {% endif %}
+            beforeSend: function() {
+                $('#{{ call_to_action }}').button('loading');
+            },
+            complete: function() {
+                $('#{{ call_to_action }}').button('reset');
+            },
+            success: function(json) {
+                $('.alert-dismissible').remove();
+
+                if (json['error']) {
+                    $('#custom_form').after('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+                }
+
+                if (json['success']) {
+                    $('#custom_form').after('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+                    document.getElementById("custom_form{{ token }}").reset();
+                }
+            }
+        });
+    });
+</script>

@@ -1,0 +1,144 @@
+{{ header }}{{ column_left }}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <button type="submit" form="form-module" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary" id="button-save"><i class="fa fa-save"></i></button>
+                <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+            <h1>{{ heading_title }}</h1>
+            <ul class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        {% if error_warning %}
+            <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endif %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+            </div>
+            <div class="panel-body">
+                <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-module" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+                            {% if error_name %}
+                                <div class="text-danger">{{ error_name }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-email">{{ entry_email }}</label>
+                        <div class="col-sm-10">
+                            <input type="email" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
+                            {% if error_name %}
+                                <div class="text-danger">{{ error_email }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="call-to-action">{{ entry_call_to_action }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="call_to_action" value="{{ call_to_action }}" placeholder="{{ entry_call_to_action }}" id="input-call-to-action" class="form-control" />
+                            {% if error_call_to_action %}
+                                <div class="text-danger">{{ error_call_to_action }}</div>
+                            {% endif %}
+                            <p><b>Example:</b> button-1592578743259</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-template-name">{{ entry_template }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="template" value="{{ template }}" placeholder="{{ entry_template }}" id="input-template-name" class="form-control" />
+                            <p><b>Example:</b> mail/name_of_template</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-custom-action">{{ entry_custom_action }}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="custom_action" value="{{ custom_action }}" placeholder="{{ entry_custom_action }}" id="input-custom-action" class="form-control" />
+                            <p><b>Example:</b> index.php?route=extension/module/builder_custom_forms/submit</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-css-custom">{{ entry_css_custom }}</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" name="css_custom" placeholder="{{ entry_css_custom }}" id="input-css-custom" class="form-control" >{{ css_custom }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                        <div class="col-sm-10">
+                            <select name="status" id="input-status" class="form-control">
+                                {% if status %}
+                                    <option value="1" selected="selected">{{ text_enabled }}</option>
+                                    <option value="0">{{ text_disabled }}</option>
+                                {% else %}
+                                    <option value="1">{{ text_enabled }}</option>
+                                    <option value="0" selected="selected">{{ text_disabled }}</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+                    <input id="dataForm" name="dataForm" type="text" value="{{ dataForm }}" hidden>
+                    <input id="renderForm" name="renderForm" type="text" value="{{ renderForm }}" hidden>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-pencil"></i>{{ heading_title }}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="build-wrap" id="fb-editor"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-pencil"></i>{{ preview }}</h3>
+            </div>
+            <div class="panel-body">
+                <div id="fb-render"></div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="view/javascript/form-builder/form-builder.min.js"></script>
+    <script type="text/javascript" src="view/javascript/form-builder/form-render.min.js"></script>
+    <script type="text/javascript"><!--
+        const option = {
+            disabledAttrs: [
+                'access'
+            ],
+            disabledActionButtons: ['save','data'],
+            dataType: 'json',
+            formData: document.getElementById('dataForm').value,
+        };
+        const formBuilder = $(document.getElementById('fb-editor')).formBuilder(option);
+        // Upload formData input
+        window.setInterval(function(){
+            $(document.getElementById('dataForm')).val(formBuilder.actions.getData('json', false));
+            const fbRender = document.getElementById('fb-render');
+            const formRenderOpts = {
+                formData: document.getElementById('dataForm').value,
+                dataType: 'json'
+            };
+            let renderedForm = $('<div>');
+            renderedForm.formRender(formRenderOpts);
+            $(fbRender).formRender(formRenderOpts);
+            $(document.getElementById('renderForm')).val(renderedForm.html());
+        }, 1000);
+        //--></script></div>
+{{ footer }}
