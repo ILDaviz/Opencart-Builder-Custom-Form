@@ -15,6 +15,8 @@ class ControllerExtensionModuleBuilderCustomForms extends Controller {
 
         $json = array();
 
+        $this->load->language('extension/module/builder_custom_forms');
+
         $this->log->write($this->request->post);
 
         if ($this->request->server['REQUEST_METHOD'] == 'POST') {
@@ -36,15 +38,15 @@ class ControllerExtensionModuleBuilderCustomForms extends Controller {
                 $mail->setTo($this->request->post['email_to']);
                 $mail->setFrom($this->request->post['email_to']);
                 $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
-                $mail->setSubject(html_entity_decode($this->language->get('text_new_affiliate'), ENT_QUOTES, 'UTF-8'));
+                $mail->setSubject(html_entity_decode($this->language->get('text_email_head'), ENT_QUOTES, 'UTF-8'));
                 if (isset($this->request->post['template_name'])){
                     $mail->setText($this->load->view($this->request->post['template_name'], $this->request->post));
                 } else {
-                    $mail->setText($this->request->post);
+                    $mail->setText(print_r($this->request->post, true));
                 }
                 $mail->send();
 
-                $json['success'] = 'Inviato con successo!';
+                $json['success'] = $this->language->get('success');
             }
         }
 
