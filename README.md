@@ -16,7 +16,7 @@ Create a custom form builder for your needs. You can position it wherever you wa
 ---
 Installation - video format 📑
 
+[![](http://img.youtube.com/vi/2WyS9nhrJaU/0.jpg)](http://www.youtube.com/watch?v=2WyS9nhrJaU "Custom Build Form Opencart 3.x Video guide Installation and usage")
+
 ---
 CoreJquery formbuilder https://github.com/kevinchappell/formBuilder
-
-[![](http://img.youtube.com/vi/2WyS9nhrJaU/0.jpg)](http://www.youtube.com/watch?v=2WyS9nhrJaU "Custom Build Form Opencart 3.x Video guide Installation and usage")
