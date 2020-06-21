@@ -7,7 +7,6 @@
 Description:
 Create a custom form builder for your needs. You can position it wherever you want with the Opencart Layout system. Easy to use and extend.
 ---
-Function:
 - 📖 Easy to implement
 - 📖 Real-time preview
 - 📖 Ability to change the post method
@@ -16,5 +15,8 @@ Function:
 - 📖 Ability to use email response templates
 ---
 Installation - video format 📑
+
+---
+CoreJquery formbuilder https://github.com/kevinchappell/formBuilder
 
 [![](http://img.youtube.com/vi/2WyS9nhrJaU/0.jpg)](http://www.youtube.com/watch?v=2WyS9nhrJaU "Custom Build Form Opencart 3.x Video guide Installation and usage")
