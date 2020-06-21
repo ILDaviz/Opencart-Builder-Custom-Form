@@ -4,6 +4,7 @@
 [![Minimum Opencart Version](https://img.shields.io/badge/Opencart-%3E%3D%203.X-green)](https://www.opencart.com/index.php?route=common/home)
 [![Minimum Opencart Version](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee%2C%20Thanks!!-orange)](https://www.buymeacoffee.com/davidev)
 
+---
 Description:
 Create a custom form builder for your needs. You can position it wherever you want with the Opencart Layout system. Easy to use and extend.
 ---
