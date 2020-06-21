@@ -17,8 +17,8 @@ $_['entry_status']      = 'Status';
 $_['entry_email']       = 'To Email';
 $_['entry_css_custom']  = 'Custom Css (Optional)';
 $_['entry_call_to_action'] = 'Call to action';
-$_['entry_template']    = 'Template name (Optional)';
-$_['entry_custom_action'] = 'Custom route to function (Optional)';
+$_['entry_template']    = 'Email Template name (Optional)';
+$_['entry_custom_action'] = 'Custom POST route function (Optional)';
 
 // Error
 $_['error_permission']  = 'Warning: You do not have permission to modify Builder custom form Content module!';
